@@ -12,10 +12,19 @@ new class extends Component {
 }; ?>
 
 <header class="flex justify-between items-center mb-16 px-6 md:px-12 py-8 md:pt-10 md:pb-0">
-    <!-- Welcome Message -->
-    <div>
-        <h1 class="text-2xl font-normal text-muted-text">Hello <span class="text-white font-semibold">Jennie!</span> 👋
-        </h1>
+    <div class="flex items-center gap-4">
+        <!-- Hamburger Menu (Mobile Only) -->
+        <button
+            class="md:hidden w-12 h-12 bg-white/5 border border-white/5 backdrop-blur-xl rounded-2xl flex items-center justify-center text-white hover:bg-white/10 transition-all duration-300 shadow-lg shadow-black/20">
+            <x-icons.hamburger.hamburger-menu class="w-6 h-6" />
+        </button>
+
+        <!-- Welcome Message -->
+        <div>
+            <h1 class="text-xl md:text-2xl font-normal text-muted-text">Hello <span
+                    class="text-white font-semibold">Jennie!</span> 👋
+            </h1>
+        </div>
     </div>
 
     <!-- Search Bar -->

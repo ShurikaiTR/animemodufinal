@@ -1,7 +1,5 @@
-<!--?xml version="1.0" encoding="UTF-8"?-->
-<svg id="Search" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Iconly/Light/Search</title>
+<svg {{ $attributes }} id="Search" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="Iconly/Light/Search" stroke="none" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"
         stroke-linejoin="round">
         <g id="Search" transform="translate(2.000000, 2.000000)" stroke="currentColor" stroke-width="1.5">
