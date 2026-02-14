@@ -20,7 +20,7 @@ new class extends Component {
         </button>
 
         <!-- Welcome Message -->
-        <div>
+        <div class="hidden md:block">
             <h1 class="text-xl md:text-2xl font-normal text-muted-text">Hello <span
                     class="text-white font-semibold">Jennie!</span> 👋
             </h1>
