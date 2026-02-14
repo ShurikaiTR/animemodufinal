@@ -1,0 +1,7 @@
+model = "gpt-5.3-codex"
+model_reasoning_effort = "medium"
+
+[mcp_servers.laravel-boost]
+command = "php"
+args = ["/Users/shurikai/Desktop/projeler/animeproject/artisan", "boost:mcp"]
+cwd = "/Users/shurikai/Desktop/projeler/animeproject"

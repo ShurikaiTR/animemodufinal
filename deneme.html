@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pixel Perfect Movie Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#EF4444", // Reddish accent seen in hearts/notifications
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#1F2128", // Deep charcoal
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#2C2E3A", // Slightly lighter charcoal for cards
+                        "sidebar-dark": "#252730",
+                        "text-light": "#1F2937",
+                        "text-dark": "#E5E7EB",
+                        "muted-dark": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        sans: ["Poppins", "sans-serif"],
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(255, 255, 255, 0.1)',
+                        'card-glow': '0 10px 40px -10px rgba(0,0,0,0.5)',
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4B5563;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6B7280;
+        }
+
+        .carousel-perspective {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .card-left {
+            transform: rotateY(25deg) scale(0.9) translateX(20px);
+            z-index: 10;
+            opacity: 0.8;
+            filter: brightness(0.7);
+        }
+
+        .card-right {
+            transform: rotateY(-25deg) scale(0.9) translateX(-20px);
+            z-index: 10;
+            opacity: 0.8;
+            filter: brightness(0.7);
+        }
+
+        .card-center {
+            transform: translateZ(50px);
+            z-index: 20;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-crown {
+            background: linear-gradient(135deg, #4F46E5 0%, #EC4899 100%);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans h-screen overflow-hidden transition-colors duration-300 antialiased selection:bg-pink-500 selection:text-white">
+    <div class="flex h-full w-full dark">
+        <aside
+            class="w-64 flex flex-col justify-between p-6 bg-surface-light dark:bg-sidebar-dark border-r border-gray-200 dark:border-gray-800/50 z-30">
+            <div>
+                <div class="flex items-center gap-3 mb-10 pl-2">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-400 via-purple-500 to-red-400"></div>
+                    <h1 class="text-xl font-bold tracking-wide dark:text-white">Cinema<span
+                            class="text-pink-500">.</span></h1>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 pl-2">Menu</h3>
+                        <nav class="space-y-2">
+                            <a class="flex items-center gap-4 px-2 py-3 text-sm font-medium dark:text-white relative group"
+                                href="#">
+                                <span
+                                    class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-white rounded-r-md shadow-[0_0_10px_rgba(255,255,255,0.8)]"></span>
+                                <span class="material-icons-round text-xl">dashboard</span>
+                                Dashboard
+                            </a>
+                            <a class="flex items-center gap-4 px-2 py-3 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                                href="#">
+                                <span class="material-icons-round text-xl">explore</span>
+                                Discover
+                            </a>
+                            <a class="flex items-center gap-4 px-2 py-3 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                                href="#">
+                                <span class="material-icons-round text-xl">trending_up</span>
+                                Activity
+                            </a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 pl-2">Library</h3>
+                        <nav class="space-y-2">
+                            <a class="flex items-center gap-4 px-2 py-3 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                                href="#">
+                                <span class="material-icons-round text-xl">timer</span>
+                                Watched
+                            </a>
+                            <a class="flex items-center gap-4 px-2 py-3 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                                href="#">
+                                <span class="material-icons-round text-xl">visibility</span>
+                                Liked
+                            </a>
+                            <a class="flex items-center gap-4 px-2 py-3 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                                href="#">
+                                <span class="material-icons-round text-xl">download</span>
+                                Downloads
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="relative mt-4">
+                <div class="absolute -top-10 left-1/2 -translate-x-1/2 z-10 w-16 h-16 animate-bounce"
+                    style="animation-duration: 3s;">
+                    <img alt="Crown" class="w-full h-full drop-shadow-2xl filter brightness-110"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcDl_kRobCXZXJPORMabvkrmbsY-rh25mwg9mjLhuhI1spq6jf4m0ASyNmajDxosY5_myinT9QyM6L3Stbcq__QkRE09qRBodqn-gJpgpMHk2CFNbQ0RjeGAIyIGqfANMRX3TL6crF7V5mse15_j5MK4bjb4WA4mpIWaJJjdWd2qXRwkZR-2rdTqzAIBrfLwOYKrJcutvtiLTaz4D7BTjvl9SDZsi0Bxozj7nhHG_c_yUoLBnGr9906GLBHaDOohOWR1RmAeSFbA" />
+                </div>
+                <div class="gradient-crown rounded-3xl p-6 pt-10 text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-full bg-white opacity-10 mix-blend-overlay"></div>
+                    <h4 class="text-white text-sm font-medium mb-1 relative z-10">Become a member</h4>
+                    <p class="text-white/80 text-xs mb-4 relative z-10">and upload your movies</p>
+                    <button
+                        class="bg-white text-black text-xs font-bold py-3 px-6 rounded-xl hover:bg-gray-100 transition shadow-lg relative z-10 w-full">
+                        Start Now
+                    </button>
+                </div>
+            </div>
+        </aside>
+        <main class="flex-1 flex flex-col p-8 overflow-y-auto bg-background-light dark:bg-background-dark relative">
+            <header class="flex justify-between items-center mb-10">
+                <div>
+                    <h2 class="text-2xl font-normal dark:text-gray-300">Hello <span
+                            class="font-bold text-black dark:text-white">Jennie!</span> 👋</h2>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="relative">
+                        <span
+                            class="absolute left-4 top-1/2 -translate-y-1/2 material-icons-round text-gray-400">search</span>
+                        <input
+                            class="bg-white dark:bg-surface-dark pl-12 pr-4 py-3 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-gray-600 w-80 dark:text-white shadow-sm dark:shadow-none placeholder-gray-500"
+                            placeholder="Tap to search" type="text" />
+                    </div>
+                    <button
+                        class="w-12 h-12 rounded-2xl bg-white dark:bg-surface-dark flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-white transition shadow-sm relative">
+                        <span class="material-icons-round">notifications</span>
+                        <span
+                            class="absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-full border-2 border-surface-dark"></span>
+                    </button>
+                    <button
+                        class="w-12 h-12 rounded-2xl bg-white dark:bg-surface-dark flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-white transition shadow-sm relative">
+                        <span class="material-icons-round">chat_bubble_outline</span>
+                        <span
+                            class="absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-full border-2 border-surface-dark"></span>
+                    </button>
+                    <div class="flex items-center gap-3 pl-2">
+                        <img alt="Profile" class="w-12 h-12 rounded-full border-2 border-surface-dark object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd0BOmFbH46W8g3nVML_kz72-ai17bQrWlW14hanATj9M5Xn9Bd83VtnRzGITjnAt4wzMCvVvIEAzu56siWjMk2YKfATMkG2QNx2xuwVcJVlJEu0hdAOuQDv15-7WIcYgp6z-ZtbMfQ5MPqHArhLhqCudLZJB3Zk-FxiTKbwO5-8agoCyXEnNnAZ86ksYK9zGW-SB98V5sk9caknu2CmRBz3Xwfc86Eiev5G5B5EQDOSMibSBzsF7JAFBLBUp7IxUCHPCF5KJYRg" />
+                        <div class="hidden xl:block">
+                            <p class="text-sm font-bold dark:text-white">Abe Rigal</p>
+                            <p class="text-xs text-gray-500">Watcher</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="flex-1 flex items-center justify-center carousel-perspective mb-12 relative h-[420px]">
+                <div
+                    class="absolute left-[5%] xl:left-[10%] w-[260px] h-[360px] rounded-3xl overflow-hidden card-left shadow-2xl transition-all duration-500 hover:scale-95 cursor-pointer">
+                    <img alt="Movie 1" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2bPpZhgmQBzNZor1SUXE6ze6N8n6dFvCc9HzNrtNy-oOvppGz0Lj4dfwDxju-Ol6Y7hAyKkk3phuJYmaRqVWyboMM2Zf-xx8JaH-ugzgipjGjoxJpCWi1TaTZxV3LkKvHWHnNs7YdYo8vdRCexvqM3BqoSYEr2FiAWsClCDnRl62lGuwYLYidNejRmXwPGBD-SB4sgO5EbpyiCsbT4jUXaJ7hAtAu08p4Dkgp_xq1N-U55CVaIgYnoZ6m9XuVKeglmtvmglhZFA" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                </div>
+                <div class="absolute left-[15%] xl:left-[20%] w-[260px] h-[380px] rounded-3xl overflow-hidden card-left shadow-2xl z-20 transition-all duration-500 hover:scale-95 cursor-pointer"
+                    style="transform: rotateY(15deg) scale(0.95) translateX(10px);">
+                    <img alt="Movie 2" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFeFxZqfYfL1SmH98ZqQiPBirZyuuJ_GVrh8vkxNvckg3qq7gNJmhmsMNQORoX2RwdTLzSujq6qNF7Wlm8hNozsB2jtM87oLGMmezgtXryw7yHXeJC_ChbFaVP-nWf2f0tJogKxMUIH0yLibt3JTh8mJP-BAzOYvH0qN63LKoO2kNlO25QTSuy5XHU2-ZCJnP-PB58g24dJ1srEIYIovKbp2czCt9ad03uO4xqAmwQAztZy7hpOUaUpYGif5m8Wlhrh-fe3Tls_g" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                </div>
+                <div
+                    class="w-[580px] h-[380px] rounded-3xl overflow-hidden card-center relative shadow-card-glow group">
+                    <img alt="Alita Battle Angel"
+                        class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF3wa-VlMVSbL1-GXsUilp_oDYRxhBAT60RNVwvMZ4bkcJ0i6rpzPO1JHN0o4Uxtv6lsvoJau9eeLJ1Tit17YOVnREC0e5I-3KfvrFgfd6W7aWkjdM2vltUebKK68YUmzdXX7cVHashU50cIDueoY1zRcgTbkiO_9PwcceOwKlheBENZOixmuNWyBqA8o2BV8x0MxjDODgZs9kmD6UfrEufaDH3W2d0nk-j6-erfqhuNHa6Vw0ZxP-3pxizixY4OCzEtXMXov7kQ" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                    <button
+                        class="absolute top-6 right-6 w-12 h-12 rounded-2xl glass flex items-center justify-center text-white hover:bg-white/20 transition backdrop-blur-md">
+                        <span class="material-icons-round text-red-500">favorite</span>
+                    </button>
+                    <div class="absolute bottom-0 left-0 w-full p-8 z-30">
+                        <h2 class="text-5xl font-bold text-white mb-2 italic tracking-tighter"
+                            style="font-family: 'Poppins', sans-serif;">ALITA</h2>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-4 tracking-wide uppercase">Battle Angel</h3>
+                        <div class="flex items-center gap-4 mb-3 text-sm font-medium text-gray-300">
+                            <span>Action</span>
+                            <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+                            <span>Sci-Fi</span>
+                            <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+                            <span>Adventure</span>
+                        </div>
+                        <div class="flex items-center gap-1 mb-4">
+                            <span class="material-icons-round text-yellow-400 text-sm">star</span>
+                            <span class="material-icons-round text-yellow-400 text-sm">star</span>
+                            <span class="material-icons-round text-yellow-400 text-sm">star</span>
+                            <span class="material-icons-round text-yellow-400 text-sm">star</span>
+                            <span class="material-icons-round text-gray-600 text-sm">star</span>
+                        </div>
+                        <p class="text-xs text-gray-400 line-clamp-2 w-3/4 mb-6 leading-relaxed">
+                            Alita, a battle cyborg revived by Ido, who realizes that she actually has the soul of a
+                            teenager.
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <button
+                                class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/30 transition shadow-lg border border-white/10">
+                                <span class="material-icons-round text-2xl ml-1">play_arrow</span>
+                            </button>
+                            <div
+                                class="flex-1 h-1 bg-gray-700/50 rounded-full relative overflow-hidden group-hover:h-2 transition-all duration-300">
+                                <div
+                                    class="absolute top-0 left-0 h-full w-2/3 bg-gradient-to-r from-red-500 to-pink-500 rounded-full">
+                                </div>
+                                <div
+                                    class="absolute top-1/2 -translate-y-1/2 left-2/3 w-3 h-3 bg-red-500 rounded-full shadow-glow">
+                                </div>
+                            </div>
+                            <div class="glass px-3 py-1 rounded-lg text-xs font-semibold text-white">
+                                1 hr 30 min
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute right-[15%] xl:right-[20%] w-[260px] h-[380px] rounded-3xl overflow-hidden card-right shadow-2xl z-20 transition-all duration-500 hover:scale-95 cursor-pointer"
+                    style="transform: rotateY(-15deg) scale(0.95) translateX(-10px);">
+                    <img alt="Movie 3" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN-_jXsStGpgKNXmRomS2ugf6IZnG0es_SPLGoRkli1aed-twqd-1qfU3RwPugyPi-X-8WjX7rpepewKbiebuzP65RY9AGcBzlXqIVykQXJJXXHZXfRph21hAJPeDMSQN8HfB3whPBmI_eMtDrVBJQU6TWHF7jRPc42_2GOZXuJ7xszQAEwqJvNLcBeU23oKguU3otDsMcdpWR2GSv8yQxcrwKIsj3cXAJK0WQKtC6Wrp7GZ5KiatGyo3nrpVfeS52E11WpcqZyg" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                </div>
+                <div
+                    class="absolute right-[5%] xl:right-[10%] w-[260px] h-[360px] rounded-3xl overflow-hidden card-right shadow-2xl transition-all duration-500 hover:scale-95 cursor-pointer">
+                    <img alt="Movie 4" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoG2_WcnaaQ4f1c4KwM7obz1RRF4jIh8F0MbwlX7cEm_Qd-XNtE4t63sVf5xJeQR7hRC6PS10mj2TQXbBmgryd2LEu8BmGXSUSwBAPrCQIwl1XTBzsgQKskBEahxasgJpMrvmrIV1I_u0aChzl74Q5En8KeW9-cUS1UkQhYAnE1hkRtVX3rFgIkUTYiWQl4Gd9lwhI0L6sllAfD0ng7YwxCjHtjY2BAqJhRIvgP56-FJQLAY4QKFKNy1aVnNNak1c122ZwxYKbcg" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                </div>
+            </section>
+            <section>
+                <div class="flex justify-between items-end mb-6">
+                    <h3 class="text-lg font-bold dark:text-white">Live Theaters</h3>
+                    <a class="glass px-4 py-2 rounded-xl text-xs font-medium text-white flex items-center gap-1 hover:bg-white/10 transition bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-none ring-1 ring-white/10"
+                        href="#">
+                        See more <span class="material-icons-round text-sm">chevron_right</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-4 rounded-3xl flex gap-4 items-center relative group hover:bg-gray-100 dark:hover:bg-gray-700/50 transition duration-300">
+                        <div class="relative flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl overflow-hidden">
+                                <img alt="User" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvyfz-RVCY3bDpKFkjJlBAVxKAncPvzceTuVREhqkDsqX5CsWL76YQXFwfQolMCU7NDDNMZrXL8OjY8_I5Jcytu3jSkHiLrdzXzyngEsVsBj_WhjT-B7e57WuKG9KMc_0kwVbspfer7baxmc8tlE-G3Wx1XPmJXzk2tNnEP-twTKEE39QUQpuxNHZOKIPSY3EXORp-7WSJK0_J0gCYY82YT6errE1oMTsr5MO9OYLOXmVoYvtvjkfZl5dnCCK9cfsAvFb76b-4sw" />
+                            </div>
+                            <div
+                                class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-surface-dark">
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-[10px] text-gray-500 uppercase font-semibold mb-0.5">Watching</p>
+                            <h4 class="text-sm font-bold truncate dark:text-white mb-2">Me before you</h4>
+                            <div class="flex items-center gap-2">
+                                <div class="flex -space-x-2">
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDISBWG9JEsgHJIgOgWbkYBX0JA0SgQ248IAr7K0w9F-IOu_-qmYPkzY2ZnmjCxpPkqQkkz21QMB5OOYN81AKEs06Q6UaeyUmZtx1RXZLYh7QhrmxoAKSttJPBPDTEbhUbrnNM1NnU3dJZqf8LGLdQuUV2ebcspeJdnBubW76MSYTWYWBxBwOn9ceQwD7s9s7sa2aVVh0P8dCzhB_LdB7e4SrBAxzU0wrsbhEGXXu2IqnDRS6kRLe8Z-ZvXHU_pylDpjpFpiaTIlg" />
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhBzq-2A12GlQHNHq9zD48DFlnYWS2SoaHxaDXOE6pcv1kB0kHE9TBRP06FASnXDC23vpG6Tdvi7fHf7Tc1ycgyWh8KBboa5RaNi8CVOn1uVXV22ozwmDFuY2m49tQb7Xkv2lLlRacydXxuAOWRuunXNeVT2MrwLxSsEUrz-pDUtu-_kzG5jHD_GmAaOuVheGaeAsrsIGPLLUJWx83IbTHRxiMvCJ9l8tm1NxJhXkpRsZKUZYbkDQuqZjtRX6Sn3YC6aYGxQZr3g" />
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSBIf5f5R_ekckAzhxViZQmlvdYnwZvOZtodpY7pIlEsj2en9AyltShSJ8J0BGkvXBa1fFXvw1B5ILsS1SlVGIHvXTjqatvVxHHv5ADmG1zO8p-5b7oAANuaIKEBE1GmYnoyQMX1a4EqeKw-G4rTHFY9fEL5NrG0D0dXMx1wArrN19OXz2TnWtLxr1NhR09HtkhHDN-3tf9hNodHkmVo8Ks_2Us9YKIJUc7BaCkxMuhITHRMVgRumr2qdmVw9xCEN3zIO5VL0IMw" />
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">12+
+                                    watching</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 opacity-80">
+                            <img alt="Thumb" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyXf29p6QJ665G2f1AzmWOj_hkxRnJovuRgpWIQvVk1BDkyXWF7MIJMWJj7WPozk_piB1O-7lVFNmbapXLAxxFGBAnBZpdLCG3cS3ag_QveYlyB15LMBRDwz5MqdZ9sO3AiXyntkoevKypzL_c-oV1kubPmep0YQ9ryAjmFAI2-QeUxTrc2xKu66YIArx9RUtsK_z7o85GaR2NiydqY1u_0Ih3Ys-bvWM9CwmtFm9Rrb5E8cqGUEPRDY2YgjV87qd6Z7ByqINytA" />
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-4 rounded-3xl flex gap-4 items-center relative group hover:bg-gray-100 dark:hover:bg-gray-700/50 transition duration-300">
+                        <div class="relative flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl overflow-hidden">
+                                <img alt="User" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkZaYefKU5YuAXU9t03989ajIpJZ7yLo1Jjau66U7wjI6wQZs8_Mb7OzvRr6oyWpwTWLRb_m3b-DmMRYGEcvVDqjYq-r3MsTerGiBBYktSSCQFAvB_Z6JgZR-xDvYOyyVLgiUvq5ZV2VnUclb8bLE_8yc3H6zBdk083RAj6rk2NJNBL6dG-HhtnBVaOeMRJE_ZiexRB_R5T_Z_KZJXQjzluvv19lTqjZOGDIHbz8C9p_qNbkbmrDe1kMvDH23MOsj6Yek6Jd62rg" />
+                            </div>
+                            <div
+                                class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-surface-dark">
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-[10px] text-gray-500 uppercase font-semibold mb-0.5">Watching</p>
+                            <h4 class="text-sm font-bold truncate dark:text-white mb-2">Black Widow</h4>
+                            <div class="flex items-center gap-2">
+                                <div class="flex -space-x-2">
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGvUJf8i1NfY1A-QrjhrvEPOmTxIVsCBddFqJW32cwEPY35HXYKPXvruUoZc26RGgLO1jbWntgqEMghRX__y8blcVaV0vdS-RXBSqApMX7ew6m5IQFAzgr4tWYs_11Npl5_If7gnI12RZv7LnxBAkK-RFB-BXvr5EEWCJ7X3Fx_kNszkTZH2RUcVUbYJLM4Ci89fdKXpfg5FKq-77dW--05e86IknrdZmy4g2KK1_FOPXTbVED8tmlTB8eeseKREWvuqO4L3aC6Q" />
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuABPxFQg-0o28m6yj5dnmWkwt4KVEySDCn7HbGdGwugFAi6KufADA309Xk6UaP8rIOeKR1ik6JfJ89KiVFVVpCprr7T7KRNFgvVCdqB-Ca3s0hZL4sjDGZZLmB3oHom12BeFLM3qovx9dddWTuz-HFG6P-ZCE0dHZ4-8C3HjZQiqO4zPdrVb6nLnxmpwkIvxFwKWB6cVEP4cCk4Miu6NMbfqHuwK2LF8_xA31qO0kw2H4D-313o63fAz_A35dkARNd131S3omSq1g" />
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfC0qQyDVJV8fug8H4WQMIegfaW1rG7gvUWmTi5EVU1Eln9SDbkQxpL51EpqDcalfr-xkwapVzoCQ31Om-bm36ILgNsoeKzkDcY19wsy2h9NSMjAqXPItE1r16eoiOQO5A_F08fXwNpdsfOOvyu24RBc-OkHqvWXkkkzBHOpCUHIRhFfFEW4UInoqyaqWCxyAywxrvvMymATUi3I3I4xkSZPX5QfnudrZ5t0rIr_9ZQMiUcGRI4OlYa-RTn-Tin4jbGZpSaA9fYA" />
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">22+
+                                    watching</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 opacity-80">
+                            <img alt="Thumb" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1YJbiMLwJkNrxtjrWZsRrncbLIRDlgTlkzuSzzO6V00s_BSaZjPbKwlCOPQ6VFZJNr7UfACuP7nMBeK6-pfUfD7VL82l4F84k3KmuYnjRZvrDy3YZ9XCFeR1rczlCY89mK2-KqbzzMLMuHt4F4ld6xg6xPY51JjlDB7zeNoGBSqUICK902g46NXNgULY_x6fBFI1US7xJ8GXYpyfhaLHAO9zCP5wM_6ajHAcIoI92d9GikmP0qag_xatOJWwQ5V3wz0Dg-Jg51A" />
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-4 rounded-3xl flex gap-4 items-center relative group hover:bg-gray-100 dark:hover:bg-gray-700/50 transition duration-300">
+                        <div class="relative flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl overflow-hidden bg-yellow-200">
+                                <img alt="User" class="w-full h-full object-cover mix-blend-multiply"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4lsN11-6dEo4CRZbTby7EpeZfVd9sRBZmBrt3a1FoXB7GTDRgBgpjCCKfsPvT_kr59MDe232cYrgxjqGIrg2gJRtkLuPY-XbHQFFhqZgIHHpendCxGdyWaDJy-MY9JyACZ-nY2vHRRBl-JVsQ2Me29gizw0l89c6isLMOjptgv8GxlstQUhkuNaJUsTeyEO8g3AyJAUDGZzu_8Z9aMmj9Jn-JSY2kZvb6us1lENHFw-oOE3p-8NHcU9gCiquEhOYLiPbgAccdyg" />
+                            </div>
+                            <div
+                                class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-surface-dark">
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-[10px] text-gray-500 uppercase font-semibold mb-0.5">Watching</p>
+                            <h4 class="text-sm font-bold truncate dark:text-white mb-2">The Hacker</h4>
+                            <div class="flex items-center gap-2">
+                                <div class="flex -space-x-2">
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO4CIrWRaAsL7rULPApsc7v4hW1ChSoR_qH0bH3U4RL5NzORtb2If4BZfsWARB-CVUqaA0cSHyAKGCKSrhwyXG_nrk_g_aSBEE3Wg-uK36QOggvxvydw0h3_HKhFi-K3w_XTi3AAsM6MpeKBqFQ4qU2MI8QDgZnE8n2niAd1nsJVAgZXe0FPCbZc3LtZOTfHm24XqDnWxJAkJdSUxl7weo25T6GQ3Ucl8pP85D__0jlE1CDk2gf5_ft_VocJQlR0sq_Eoy3QaqjA" />
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdMa7DktS94Zg83uEOQ2cIWfRDITBH5Z_uJd4DiuPjS8muVy3pe84V0lFjys6sO453zo_EurppNUOUWjZSYIsZvFopNQZSMHnwGH0JR7l01T757-f7YdHHmr3HngxS3XQ30rpPpm891W7WHuC08F1mnvlsXqmBV_XEQoTNuje5cZ5aL-aCnpIyF9STt8wa1VCt4-twaiKvewrFAL-fTS-2KH03VzYcYkX7aR-YimbsM5RvUKT_YxNE9pys-atRnDj_INT32dliSA" />
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7P8TUbrUcD0zN9POmWM1zCnzxU19xINQr5sWAAKWsYQa8hMfQ-n9_bo_0pJoVFSrheKwweGleEGzhdYhbbpjLIVzQYhyyr3O-U0DIe8XEDIvhlhz1tn5trTGYZUH7D85DOypxHE4EIMS9zkV2Gw_kp2mMpg9yY7D5i0MYNTPOStt78AOJ7ylnExQQzmUXtHAHG35kU_ttYoI2KEm85Z79G0UrXNQhuoQsNaXBISrTzKAqUlOC6Pugc0OVtoUckE9iAhOlOAfmRQ" />
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">34+
+                                    watching</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 opacity-80">
+                            <img alt="Thumb" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2VpyJ-aWs9ZvnTRcY1Xa0-0zXfKwPfsROxNqOnDgPWrqP9DsQfhLMuJOrvho0v2KvjtzNc_Ed_bqTpjOagT6DmrBRUzJpYV6ub4r0gQ7qV9Ga8HuZ_thj944GIr2T_CFhuu745Bni9NI-VkSxdEXkEoMvE1ZAecc5mfKK1w_74HS3TQxEij8xPHj0gCrbJgAxhaWScEf1fObnSpKRdXbDE8HPZ-WDd2P9ibm5RdbWMIAZbHKy6x3iba6SoGx2W_-9fv3it3eR2Q" />
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-4 rounded-3xl flex gap-4 items-center relative group hover:bg-gray-100 dark:hover:bg-gray-700/50 transition duration-300">
+                        <div class="relative flex-shrink-0">
+                            <div class="w-14 h-14 rounded-2xl overflow-hidden">
+                                <img alt="User" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYOgJMpWOyYoiF9EzhU0V0ZOsAq3jQJD1J-CN5W5OSQopFcaCkJ7O-gsyBdeg2FZY2LOS_AMbGArXpB564fmeZZC9ioqBsEV4O3xKOY4KP8U7wLMzfMBLbwIN3q1Zn8AnIABIp4E0-BfOqdkOjNFuFz6EMTTW46Wq0UTQez4Am9j0Ke_8aBg45H92q5SOyq1mlIZMhqbLDjZyA-Re7A85YHYjxNXa5BS6tbDfxBD2F6Rhm8fNtSeoYBNrfmvxdnP1cWKgFW8wikw" />
+                            </div>
+                            <div
+                                class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-500 rounded-full border-2 border-surface-dark">
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-[10px] text-gray-500 uppercase font-semibold mb-0.5">Waiting Stream</p>
+                            <h4 class="text-sm font-bold truncate dark:text-white mb-2">Spider-man</h4>
+                            <div class="flex items-center gap-2">
+                                <div class="flex -space-x-2">
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0jWEJoaW4UHIG2F4-KhiDI9c3CCduIM5AZy4KAryBa3DOUyHV57BRxlaLH2AcH8KoHBqO9YFcrvYcBAH6WseRq3ktC-NZZOpe_qydrolo7lAlU3duVgUf70l_b0Re0ux82sFVtFiaZjolQqblIuwdI2LucmuF-0aE_g9__89x11WUturFWPiT0y7QczWf6d9Iw70TQi_Qa4Gm70ymy-Mlyu4FV96eDF4b-nzDGgBM1INadRyBwbgplI_8lZDZtUqJjJLRvEEDuQ" />
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-wRcVoPySTh5woKfPWAP5Z73xtBsFlDYNs7estzfaJEB0Qdc9jcOs72C45VRgzuwTOGu9rIuDsWX2y5DzVAdi9owi3-4i-EQ-5HiZhWbPiyktspV3I03sQT5pDXXmbHvRAFjcmJpBG3oxagiHFPa2VgUyvlgkCAggn2egkUJHkApOEPzunyzlZWiVYQ4s1P3Mffcs6ZJ3oITlbVKBS2MMLns6zywFRKMdy1CDFHYnyhF6NNdoEx7DngVY1YQIt3fbKJCfiCpO-g" />
+                                    <img alt="" class="w-6 h-6 rounded-full border-2 border-surface-dark"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7XPG1gQhPJbDvD1G-kTdubvRnpJL3Y8OOOwlMwfX_q-BHnGJS_VBwrM5G9mBqXq77YksFxAwCRVoodvW2ugZCZlb4NOkfHZ5I5KbuS3re-AbCXdiYXVXVuzKme15L7MudzlIA95YzPQju6Ohxwq5orwtKmuegO7CIncZUSLXForJ-1sb609oGzwrWhJ1B1h90TiKOE6msugPkh22ZGSCYjUhI-Cavzat7GyfjtAhZs7JvfCiAjquWI2S4rNyE-3ZwHOZb_4nS8w" />
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-medium whitespace-nowrap">32+ waiting</span>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 opacity-80">
+                            <img alt="Thumb" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnr_RZODwuPkBwXNIRu40fsmnVc-buSeaSZo0rvb5YNt7l3OZvLd85QgYGsY_QhqQG33Qu0IJ_gNHGnWxHWckKNsaSB-vBVAgqmFBPizmD-YbnVNgoLu84AptGZmKP9gr262WqjlBKRykBFE8qfeqb8EjZdwQO4ZdUqIqktP6a4M_X77PTOaXAf0BRhFW41T_KELvLMby_mQNRGfLIMrdkqa3sHkoczN5dzIfBKMX5h4BIL7g04JbTBqi6j56Y3QdBbtRhEgJ-dQ" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+
+</html>
