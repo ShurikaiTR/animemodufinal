@@ -2,13 +2,12 @@
 
 use Livewire\Volt\Component;
 
-new class extends Component
-{
-    //
+new class extends Component {
+    public bool $isMobile = false;
 }; ?>
 
 <aside x-data="{ open: false }"
-    class="w-sidebar bg-sidebar-bg flex flex-col flex-shrink-0 rounded-sidebar p-8 h-full min-h-[calc(100vh-3rem)] shadow-[var(--shadow-sidebar)] border border-white/5">
+    class="bg-sidebar-bg flex flex-col flex-shrink-0 p-8 h-full shadow-[var(--shadow-sidebar)] border border-white/5 {{ $isMobile ? 'w-full rounded-none' : 'w-sidebar rounded-sidebar min-h-[calc(100vh-3rem)]' }}">
 
     <!-- Logo -->
     <div class="flex items-center gap-3 text-2xl font-bold mb-16 tracking-wide text-white">
