@@ -64,85 +64,83 @@
     }
 }
 
-@layer utilities {
-    .perspective-1200 {
-        perspective: 1200px;
+@utility perspective-1200 {
+    perspective: 1200px;
+}
+
+@utility preserve-3d {
+    transform-style: preserve-3d;
+}
+
+@utility card-center {
+    transform: translateZ(100px);
+    z-index: 50;
+}
+
+@utility card-left {
+    transform: rotateY(25deg) scale(0.9) translateZ(-50px);
+    z-index: 20;
+    opacity: 0.8;
+}
+
+@utility card-right {
+    transform: rotateY(-25deg) scale(0.9) translateZ(-50px);
+    z-index: 20;
+    opacity: 0.8;
+}
+
+@utility card-far-left {
+    transform: rotateY(35deg) scale(0.8) translateZ(-100px);
+    z-index: 10;
+    opacity: 0.4;
+}
+
+@utility card-far-right {
+    transform: rotateY(-35deg) scale(0.8) translateZ(-100px);
+    z-index: 10;
+    opacity: 0.4;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@keyframes ring {
+    0% {
+        transform: rotate(0);
     }
 
-    .preserve-3d {
-        transform-style: preserve-3d;
+    15% {
+        transform: rotate(15deg);
     }
 
-    .card-center {
-        transform: translateZ(100px);
-        z-index: 50;
+    30% {
+        transform: rotate(-15deg);
     }
 
-    .card-left {
-        transform: rotateY(25deg) scale(0.9) translateZ(-50px);
-        z-index: 20;
-        opacity: 0.8;
+    45% {
+        transform: rotate(10deg);
     }
 
-    .card-right {
-        transform: rotateY(-25deg) scale(0.9) translateZ(-50px);
-        z-index: 20;
-        opacity: 0.8;
+    60% {
+        transform: rotate(-10deg);
     }
 
-    .card-far-left {
-        transform: rotateY(35deg) scale(0.8) translateZ(-100px);
-        z-index: 10;
-        opacity: 0.4;
+    75% {
+        transform: rotate(5deg);
     }
 
-    .card-far-right {
-        transform: rotateY(-35deg) scale(0.8) translateZ(-100px);
-        z-index: 10;
-        opacity: 0.4;
+    100% {
+        transform: rotate(0);
     }
+}
 
-    .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-    }
-
-    .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    @keyframes ring {
-        0% {
-            transform: rotate(0);
-        }
-
-        15% {
-            transform: rotate(15deg);
-        }
-
-        30% {
-            transform: rotate(-15deg);
-        }
-
-        45% {
-            transform: rotate(10deg);
-        }
-
-        60% {
-            transform: rotate(-10deg);
-        }
-
-        75% {
-            transform: rotate(5deg);
-        }
-
-        100% {
-            transform: rotate(0);
-        }
-    }
-
-    .animate-ring {
-        animation: ring 0.8s ease-in-out infinite;
-        transform-origin: top center;
-    }
+@utility animate-ring {
+    animation: ring 0.8s ease-in-out infinite;
+    transform-origin: top center;
 }

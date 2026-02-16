@@ -1,6 +1,6 @@
 <?php
 
-use Livewire\Volt\Component;
+use Livewire\Component;
 
 new class extends Component {
     //
@@ -48,13 +48,13 @@ new class extends Component {
 
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <button
-                    class="bg-white text-dark-bg hover:bg-gray-200 hover:scale-105 transition-all duration-300 px-8 py-3.5 rounded-2xl font-bold text-sm flex justify-center sm:justify-start items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                    class="bg-white text-dark-bg hover:bg-gray-200 hover:scale-105 transition-all duration-300 px-8 py-3.5 rounded-2xl font-bold text-sm flex justify-center sm:justify-start items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-dark-bg">
                     <i class="fas fa-play text-xs"></i>
                     Hemen İzle
                 </button>
 
                 <button
-                    class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-8 py-3.5 rounded-2xl font-semibold text-sm flex justify-center sm:justify-start items-center gap-3 group-hover:border-white/30">
+                    class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-8 py-3.5 rounded-2xl font-semibold text-sm flex justify-center sm:justify-start items-center gap-3 group-hover:border-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-dark-bg">
                     <i class="fas fa-plus"></i>
                     Listeme Ekle
                 </button>

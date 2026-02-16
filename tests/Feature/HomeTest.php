@@ -9,5 +9,5 @@ test('home page renders successfully', function () {
         ->assertSeeLivewire('layout.navbar')
         ->assertSeeLivewire('home.hero-section')
         ->assertSeeLivewire('home.live-theaters')
-        ->assertSeeLivewire('layout.footer');
+        ->assertSee('SYSTEM ONLINE');
 });

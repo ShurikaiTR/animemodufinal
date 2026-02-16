@@ -1,10 +1,7 @@
-<?php
-
-use Livewire\Volt\Component;
-
-new class extends Component {
-    //
-}; ?>
+@php
+    $socialLinkClasses = 'w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-muted-text hover:text-primary-blue hover:-translate-y-1.5 hover:scale-110 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue focus-visible:ring-offset-2 focus-visible:ring-offset-main-bg';
+    $footerLinkClasses = 'text-muted-text hover:text-white transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue focus-visible:ring-offset-2 focus-visible:ring-offset-main-bg rounded-sm';
+@endphp
 
 <footer class="mt-auto py-12 border-t border-white/5">
     <div class="max-w-7xl mx-auto">
@@ -19,16 +16,13 @@ new class extends Component {
                     kesintisiz izleyin.
                 </p>
                 <div class="flex items-center gap-4 mt-8">
-                    <a href="#"
-                        class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-muted-text hover:text-primary-blue hover:-translate-y-1.5 hover:scale-110 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+                    <a href="#" class="{{ $socialLinkClasses }}">
                         <x-icons.social-media.x class="w-5 h-5" />
                     </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-muted-text hover:text-primary-blue hover:-translate-y-1.5 hover:scale-110 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+                    <a href="#" class="{{ $socialLinkClasses }}">
                         <x-icons.social-media.discord class="w-5 h-5" />
                     </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-muted-text hover:text-primary-blue hover:-translate-y-1.5 hover:scale-110 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+                    <a href="#" class="{{ $socialLinkClasses }}">
                         <x-icons.social-media.instagram class="w-5 h-5" />
                     </a>
                 </div>
@@ -38,12 +32,12 @@ new class extends Component {
             <div>
                 <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Platform</h4>
                 <ul class="space-y-4">
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Anasayfa</a></li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Popüler
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Anasayfa</a></li>
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Popüler
                             Animeler</a></li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Yeni Bölümler</a>
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Yeni Bölümler</a>
                     </li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Takvim</a></li>
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Takvim</a></li>
                 </ul>
             </div>
 
@@ -51,12 +45,12 @@ new class extends Component {
             <div>
                 <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Destek</h4>
                 <ul class="space-y-4">
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Sıkça Sorulan
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Sıkça Sorulan
                             Sorular</a></li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">İletişim</a></li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Kullanım
+                    <li><a href="#" class="{{ $footerLinkClasses }}">İletişim</a></li>
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Kullanım
                             Koşulları</a></li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Gizlilik
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Gizlilik
                             Politikası</a></li>
                 </ul>
             </div>
@@ -65,11 +59,11 @@ new class extends Component {
             <div>
                 <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Topluluk</h4>
                 <ul class="space-y-4">
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Discord
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Discord
                             Sunucumuz</a></li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Forum</a></li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Haberler</a></li>
-                    <li><a href="#" class="text-muted-text hover:text-white transition-colors text-sm">Bağış Yap</a>
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Forum</a></li>
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Haberler</a></li>
+                    <li><a href="#" class="{{ $footerLinkClasses }}">Bağış Yap</a>
                     </li>
                 </ul>
             </div>

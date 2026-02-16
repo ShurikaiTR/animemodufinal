@@ -1,5 +1,5 @@
 <?php
 
-use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\Route;
 
-Volt::route('/', 'home')->name('home');
+Route::livewire('/', 'pages::home')->name('home');
