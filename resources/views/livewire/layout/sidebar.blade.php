@@ -6,7 +6,7 @@ new class extends Component {
     public bool $isMobile = false;
 }; ?>
 
-<aside x-data="{ open: false }"
+<aside
     class="bg-sidebar-bg flex flex-col flex-shrink-0 p-8 h-full shadow-[var(--shadow-sidebar)] border border-white/5 {{ $isMobile ? 'w-full rounded-none' : 'w-sidebar rounded-sidebar min-h-[calc(100vh-3rem)]' }}">
 
     <!-- Logo -->

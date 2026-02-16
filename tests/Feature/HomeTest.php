@@ -3,10 +3,11 @@
 use function Pest\Laravel\get;
 
 test('home page renders successfully', function () {
-    get('/home')
+    get('/')
         ->assertOk()
-        ->assertSeeLivewire('sidebar')
-        ->assertSeeLivewire('navbar')
+        ->assertSeeLivewire('layout.sidebar')
+        ->assertSeeLivewire('layout.navbar')
         ->assertSeeLivewire('home.hero-section')
-        ->assertSeeLivewire('home.live-theaters');
+        ->assertSeeLivewire('home.live-theaters')
+        ->assertSeeLivewire('layout.footer');
 });

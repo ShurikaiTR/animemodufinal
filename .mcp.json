@@ -3,7 +3,7 @@
         "laravel-boost": {
             "command": "php",
             "args": [
-                "artisan",
+                "/Users/shurikai/Desktop/projeler/animeproject/artisan",
                 "boost:mcp"
             ]
         }
