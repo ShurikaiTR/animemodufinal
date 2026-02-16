@@ -10,9 +10,8 @@ new class extends Component {
     class="bg-sidebar-bg flex flex-col flex-shrink-0 p-8 h-full shadow-[var(--shadow-sidebar)] border border-white/5 {{ $isMobile ? 'w-full rounded-none' : 'w-sidebar rounded-sidebar min-h-[calc(100vh-3rem)]' }}">
 
     <!-- Logo -->
-    <div class="flex items-center gap-3 text-2xl font-bold mb-16 tracking-wide text-white">
-        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-white to-gray-400"></div>
-        Cinema.
+    <div class="flex items-center justify-center mb-16">
+        <img src="{{ asset('images/animemodu-logo.svg') }}" alt="AnimeModu" class="h-16 w-auto">
     </div>
 
     <!-- Menu Section -->

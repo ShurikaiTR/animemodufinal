@@ -26,21 +26,21 @@ new
             x-transition:leave="transition ease-in-out duration-300 transform" x-transition:leave-start="translate-x-0"
             x-transition:leave-end="-translate-x-full" class="relative flex w-full max-w-xs flex-1 h-full">
 
-            <livewire:sidebar :is-mobile="true" />
+            <livewire:layout.sidebar :is-mobile="true" />
         </div>
     </div>
 
     <div class="flex gap-2 relative">
         <!-- Sidebar -->
-        <div class="hidden lg:block p-6 sticky top-0 z-20 h-screen">
-            <livewire:sidebar />
+        <div class="hidden lg:block p-6 z-20">
+            <livewire:layout.sidebar />
         </div>
 
 
         <!-- Main Content -->
         <main class="flex-1 flex flex-col relative z-10">
             <!-- Navbar -->
-            <livewire:navbar />
+            <livewire:layout.navbar />
 
             <!-- Content Area (Grows naturally) -->
             <div class="pb-24 md:pb-10 px-4 md:px-8">
@@ -50,6 +50,9 @@ new
                     <livewire:home.live-theaters />
                 </div>
             </div>
+
+            <!-- Footer -->
+            <livewire:layout.footer />
         </main>
     </div>
 </div>
