@@ -8,6 +8,6 @@ test('home page renders successfully', function () {
         ->assertSeeLivewire('layout.sidebar')
         ->assertSeeLivewire('layout.navbar')
         ->assertSeeLivewire('home.hero-section')
-        ->assertSeeLivewire('home.live-theaters')
+        ->assertSeeLivewire('home.latest-animes.latest-animes')
         ->assertSee('SYSTEM ONLINE');
 });

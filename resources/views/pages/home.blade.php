@@ -47,7 +47,7 @@ new
                 <div class="pt-2 pb-10">
                     <livewire:home.hero-section />
 
-                    <livewire:home.live-theaters />
+                    <livewire:home.latest-animes.latest-animes />
                 </div>
             </div>
 

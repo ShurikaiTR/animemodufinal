@@ -48,8 +48,8 @@ test('hero section renders primary content', function () {
         ->assertSee('HD');
 });
 
-test('live theaters renders active streams', function () {
-    Livewire::test('home.live-theaters')
+test('latest animes renders active streams', function () {
+    Livewire::test('home.latest-animes.latest-animes')
         ->assertSee('Eklenen Animeler')
-        ->assertSee('Watching');
+        ->assertSee('Solaris');
 });
