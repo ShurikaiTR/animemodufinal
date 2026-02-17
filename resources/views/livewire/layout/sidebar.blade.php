@@ -7,7 +7,7 @@ new class extends Component {
 }; ?>
 
 <aside
-    class="bg-sidebar-bg flex flex-col flex-shrink-0 p-8 h-full shadow-[var(--shadow-sidebar)] border border-white/5 {{ $isMobile ? 'w-full rounded-none' : 'w-sidebar rounded-sidebar min-h-[calc(100vh-3rem)]' }}">
+    class="bg-sidebar-bg flex flex-col shrink-0 p-8 h-full shadow-[var(--shadow-sidebar)] border border-white/5 {{ $isMobile ? 'w-full rounded-none' : 'w-sidebar rounded-sidebar min-h-[calc(100vh-3rem)]' }}">
 
     <!-- Logo -->
     <div class="flex items-center justify-center mb-16">
@@ -17,7 +17,7 @@ new class extends Component {
     <!-- Menu Section -->
     <div class="mb-10">
         <div class="text-xs text-sidebar-label font-semibold uppercase tracking-label mb-5 pl-2">Menu</div>
-        <nav class="space-y-1">
+        <nav class="flex flex-col gap-1">
             <a href="#" class="flex items-center gap-4 py-3 px-2 text-primary-blue font-normal relative group">
                 <div
                     class="absolute -left-8 top-1/2 -translate-y-1/2 h-6 w-1 bg-primary-blue rounded-r shadow-active-glow">
@@ -42,7 +42,7 @@ new class extends Component {
     <!-- Library Section -->
     <div class="mb-auto">
         <div class="text-xs text-sidebar-label font-semibold uppercase tracking-label mb-5 pl-2">Library</div>
-        <nav class="space-y-1">
+        <nav class="flex flex-col gap-1">
             <a href="#"
                 class="flex items-center gap-4 py-3 px-2 text-muted-text hover:text-primary-blue transition-colors font-normal">
                 <i class="far fa-clock w-5 text-center"></i> Watched

@@ -31,7 +31,7 @@
             <!-- Quick Links -->
             <div>
                 <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Platform</h4>
-                <ul class="space-y-4">
+                <ul class="flex flex-col gap-4">
                     <li><a href="#" class="{{ $footerLinkClasses }}">Anasayfa</a></li>
                     <li><a href="#" class="{{ $footerLinkClasses }}">Popüler
                             Animeler</a></li>
@@ -44,7 +44,7 @@
             <!-- Support -->
             <div>
                 <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Destek</h4>
-                <ul class="space-y-4">
+                <ul class="flex flex-col gap-4">
                     <li><a href="#" class="{{ $footerLinkClasses }}">Sıkça Sorulan
                             Sorular</a></li>
                     <li><a href="#" class="{{ $footerLinkClasses }}">İletişim</a></li>
@@ -58,7 +58,7 @@
             <!-- Community -->
             <div>
                 <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Topluluk</h4>
-                <ul class="space-y-4">
+                <ul class="flex flex-col gap-4">
                     <li><a href="#" class="{{ $footerLinkClasses }}">Discord
                             Sunucumuz</a></li>
                     <li><a href="#" class="{{ $footerLinkClasses }}">Forum</a></li>

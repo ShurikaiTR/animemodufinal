@@ -57,16 +57,18 @@ new class extends Component {
             </p>
         </div>
 
-        <a href="#"
-            class="text-sm font-semibold text-white hover:text-primary-blue transition-colors">
+        <a href="#" class="text-sm font-semibold text-white hover:text-primary-blue transition-colors">
             Tümünü Gör
         </a>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-5">
         @foreach ($latestAnimes as $anime)
-            <x-anime.card :title="$anime['title']" :poster_url="$anime['poster_url']" :rating="$anime['rating']"
-                :year="$anime['year']" :genre="$anime['genre']" :episode_count="$anime['episode_count']" href="#" />
+            <div wire:key="latest-anime-{{ $anime['slug'] }}">
+                <x-anime.card :title="$anime['title']" :poster_url="$anime['poster_url']" :rating="$anime['rating']"
+                    :year="$anime['year']" :genre="$anime['genre']" :episode_count="$anime['episode_count']"
+                    :slug="$anime['slug']" href="#" />
+            </div>
         @endforeach
     </div>
 </div>

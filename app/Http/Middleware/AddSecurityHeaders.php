@@ -18,17 +18,63 @@ class AddSecurityHeaders
     {
         Vite::useCspNonce();
 
+        $viteDevOrigins = [
+            'http://localhost:5173',
+            'http://127.0.0.1:5173',
+            'http://[::1]:5173',
+            'https://localhost:5173',
+            'https://127.0.0.1:5173',
+            'https://[::1]:5173',
+        ];
+
+        $scriptSrc = [
+            "'self'",
+            "'nonce-".Vite::cspNonce()."'",
+            "'unsafe-inline'",
+            "'unsafe-eval'",
+        ];
+
+        $styleSrc = [
+            "'self'",
+            "'unsafe-inline'",
+        ];
+
+        $fontSrc = [
+            "'self'",
+            'data:',
+        ];
+
+        $connectSrc = [
+            "'self'",
+            'https:',
+            'ws:',
+            'wss:',
+        ];
+
+        if (app()->isLocal()) {
+            $scriptSrc = [...$scriptSrc, ...$viteDevOrigins];
+            $styleSrc = [...$styleSrc, ...$viteDevOrigins];
+            $fontSrc = [...$fontSrc, ...$viteDevOrigins];
+            $connectSrc = [...$connectSrc, ...$viteDevOrigins];
+
+            // Allow local Vite assets even if host/IP representation differs.
+            $scriptSrc = [...$scriptSrc, 'http:', 'https:'];
+            $styleSrc = [...$styleSrc, 'http:', 'https:'];
+            $fontSrc = [...$fontSrc, 'http:', 'https:'];
+        }
+
         $csp = implode('; ', [
             "default-src 'self'",
             "base-uri 'self'",
             "form-action 'self'",
             "frame-ancestors 'none'",
             "object-src 'none'",
-            "script-src 'self' 'nonce-".Vite::cspNonce()."' 'unsafe-inline' 'unsafe-eval'",
-            "style-src 'self' 'nonce-".Vite::cspNonce()."' 'unsafe-inline'",
+            'script-src '.implode(' ', $scriptSrc),
+            'style-src '.implode(' ', $styleSrc),
+            'style-src-elem '.implode(' ', $styleSrc),
             "img-src 'self' data: blob: https:",
-            "font-src 'self' data:",
-            "connect-src 'self' https: ws: wss:",
+            'font-src '.implode(' ', $fontSrc),
+            'connect-src '.implode(' ', $connectSrc),
         ]);
 
         $response = $next($request);

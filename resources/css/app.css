@@ -68,6 +68,9 @@
 }
 
 @layer base {
+    [x-cloak] {
+        display: none !important;
+    }
 
     ::-webkit-scrollbar {
         width: 8px;

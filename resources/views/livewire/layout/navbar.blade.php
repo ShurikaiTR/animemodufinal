@@ -32,7 +32,7 @@ new class extends Component {
         class="hidden md:flex w-search-bar bg-white/5 border border-white/5 focus-within:border-white/20 backdrop-blur-xl rounded-2xl items-center gap-3 px-5 py-3.5 text-muted-text transition-all duration-300 shadow-lg shadow-black/20">
         <x-icons.search class="w-5 h-5 text-white/40" />
         <input type="text" placeholder="Anime Ara..."
-            class="bg-transparent border-none outline-none text-white w-full text-sm placeholder-muted-text focus:ring-0 rounded-md">
+            class="bg-transparent border-none text-white w-full text-sm placeholder-muted-text rounded-md focus:outline-hidden">
     </div>
 
     <!-- Right Actions -->
