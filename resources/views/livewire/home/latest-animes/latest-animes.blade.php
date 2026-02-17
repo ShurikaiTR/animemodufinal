@@ -62,7 +62,7 @@ new class extends Component {
         </a>
     </div>
 
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-5">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-4 md:gap-6">
         @foreach ($latestAnimes as $anime)
             <div wire:key="latest-anime-{{ $anime['slug'] }}">
                 <x-anime.card :title="$anime['title']" :poster_url="$anime['poster_url']" :rating="$anime['rating']"
