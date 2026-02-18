@@ -57,8 +57,11 @@ new class extends Component {
             </p>
         </div>
 
-        <a href="#" class="text-sm font-semibold text-white hover:text-primary-blue transition-colors">
-            Tümünü Gör
+        <a href="#"
+            class="group/link inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm transition-all duration-300 hover:border-primary-blue/70 hover:bg-primary-blue/10 hover:text-primary-blue hover:shadow-[0_0_18px_rgba(47,128,237,0.25)]">
+            <span>Tümünü Gör</span>
+            <x-icons.arrows.chevron-right
+                class="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
         </a>
     </div>
 

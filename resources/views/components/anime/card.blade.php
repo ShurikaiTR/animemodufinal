@@ -13,7 +13,10 @@
     $link = $slug && \Illuminate\Support\Facades\Route::has('anime.show')
         ? route('anime.show', $slug)
         : $href;
-    $genres = is_array($genre) ? implode(', ', $genre) : $genre;
+    $genreList = is_array($genre) ? $genre : array_map('trim', array_filter(explode(',', $genre)));
+    $displayGenres = array_slice($genreList, 0, 2);
+    $extraCount = count($genreList) - 2;
+    $genreString = implode(', ', $displayGenres);
 @endphp
 
 <article class="group relative w-full cursor-pointer" {{ $attributes }}>
@@ -52,7 +55,9 @@
                 
                 {{-- Details --}}
                 <div class="mt-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200">
-                    <p class="text-xs font-semibold text-white mb-1 tracking-wide drop-shadow-md">{{ $genres }}</p>
+                    <p class="text-xs font-semibold text-white mb-1 tracking-wide drop-shadow-md">
+                        {{ $genreString }}@if($extraCount > 0)<span class="text-primary-blue text-[10px] ml-1 font-bold">+{{ $extraCount }}</span>@endif
+                    </p>
                     <p class="text-[10px] text-gray-200 font-medium drop-shadow-xs">{{ $episode_count }} Bölüm</p>
                     <div class="w-8 h-[2px] bg-primary-blue/80 mx-auto mt-3 rounded-full shadow-[0_0_8px_rgba(47,128,237,0.5)]"></div>
                 </div>
