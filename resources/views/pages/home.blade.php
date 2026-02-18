@@ -47,6 +47,8 @@ new
                     <livewire:home.hero-section />
 
                     <livewire:home.latest-animes.latest-animes />
+
+                    <livewire:home.latest-episodes.latest-episodes />
                 </div>
             </div>
 
