@@ -46,9 +46,9 @@ new
                 <div class="pt-2 pb-10">
                     <livewire:home.hero-section />
 
-                    <livewire:home.latest-animes.latest-animes />
+                    <livewire:home.latest-animes.latest-animes defer.bundle />
 
-                    <livewire:home.latest-episodes.latest-episodes />
+                    <livewire:home.latest-episodes.latest-episodes defer.bundle />
                 </div>
             </div>
 

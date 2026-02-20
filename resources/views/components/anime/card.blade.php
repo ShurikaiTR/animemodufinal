@@ -25,8 +25,11 @@
         <div class="relative w-full aspect-[2/3] rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-out group-hover:scale-95 group-hover:rounded-3xl group-hover:shadow-2xl group-hover:shadow-black/60 isolate">
             
             {{-- Main Image --}}
-            <img src="{{ $poster_url }}" 
-                 alt="{{ $title }} Poster" 
+            <img src="{{ $poster_url }}"
+                 alt="{{ $title }} Poster"
+                 loading="lazy"
+                 decoding="async"
+                 fetchpriority="low"
                  class="w-full h-full object-cover transition-all duration-500 group-hover:blur-xs group-hover:brightness-50 z-0">
             
             {{-- Badges --}}

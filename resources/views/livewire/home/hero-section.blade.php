@@ -13,6 +13,7 @@ new class extends Component {
     <div class="relative w-full h-[480px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
 
         <img src="https://image.tmdb.org/t/p/original/9CsTtHlvErQ93jvIWIjs06G0Abe.jpg" alt="Öne Çıkan Anime"
+            loading="eager" decoding="async" fetchpriority="high"
             class="absolute inset-0 w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-[1500ms] ease-out">
 
         <div class="absolute inset-0 bg-gradient-to-r from-dark-bg via-dark-bg/80 to-transparent"></div>

@@ -77,16 +77,16 @@
     }
 
     ::-webkit-scrollbar-track {
-        background: transparent;
+        background: var(--color-dark-bg);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #4B5563;
+        background: var(--color-primary-blue);
         border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #6B7280;
+        filter: brightness(0.9);
     }
 
     h1,
@@ -97,7 +97,14 @@
     h6 {
         font-family: var(--font-rubik);
     }
+
+    ::selection {
+        background: #fff;
+        color: #151f30;
+        text-shadow: none;
+    }
 }
+
 
 @utility perspective-1200 {
     perspective: 1200px;

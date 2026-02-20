@@ -52,7 +52,7 @@ new class extends Component {
     <div class="flex justify-between items-end mb-8">
         <div>
             <h3 class="text-2xl font-bold text-white">Eklenen Animeler</h3>
-            <p class="text-sm text-muted-text mt-2 font-medium">
+            <p class="mt-2 text-sm font-normal text-white/65">
                 Kütüphanemize yeni katılan seriler
             </p>
         </div>
