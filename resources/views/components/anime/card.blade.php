@@ -47,17 +47,17 @@
             </div>
 
             {{-- Glass Overlay --}}
-            <div class="absolute inset-0 z-20 bg-[#0f1014]/60 backdrop-blur-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center p-4">
+            <div class="absolute inset-0 z-20 bg-[#0f1014]/60 backdrop-blur-[4px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100 flex flex-col items-center justify-center text-center p-4">
                 
                 {{-- Play Button Component (Premium Style) --}}
-                <div class="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 ease-out">
+                <div class="transform translate-y-4 opacity-0 transition-all duration-500 delay-100 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     <div class="w-16 h-16 bg-primary-blue/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(47,128,237,0.5)] border border-white/20 transition-all duration-300 hover:scale-110 hover:shadow-[0_0_30px_rgba(47,128,237,0.8)]">
                         <x-icons.play.play class="text-white ml-1 w-7 h-7" aria-hidden="true" />
                     </div>
                 </div>
                 
                 {{-- Details --}}
-                <div class="mt-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200">
+                <div class="mt-4 transform translate-y-4 opacity-0 transition-all duration-500 delay-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     <p class="text-xs font-semibold text-white mb-1 tracking-wide drop-shadow-md">
                         {{ $genreString }}@if($extraCount > 0)<span class="text-primary-blue text-[10px] ml-1 font-bold">+{{ $extraCount }}</span>@endif
                     </p>

@@ -10,7 +10,8 @@ new
 }; ?>
 
 <div class="min-h-screen bg-main-bg text-white font-sans" x-data="{ sidebarOpen: false }"
-    @open-sidebar.window="sidebarOpen = true">
+    x-effect="document.body.classList.toggle('overflow-hidden', sidebarOpen && window.innerWidth < 1024)"
+    @open-sidebar.window="sidebarOpen = true" @keydown.escape.window="sidebarOpen = false">
 
     <!-- Mobile Sidebar Overlay -->
     <div x-show="sidebarOpen" x-cloak class="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true">

@@ -49,7 +49,7 @@ new class extends Component {
 }; ?>
 
 <div class="mt-4 mb-24 md:mb-0">
-    <div class="flex justify-between items-end mb-8">
+    <div class="mb-8 flex flex-wrap items-end justify-between gap-3">
         <div>
             <h3 class="text-2xl font-bold text-white">Eklenen Animeler</h3>
             <p class="mt-2 text-sm font-normal text-white/65">
@@ -58,7 +58,7 @@ new class extends Component {
         </div>
 
         <a href="#"
-            class="group/link inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm transition-all duration-300 hover:border-primary-blue/70 hover:bg-primary-blue/10 hover:text-primary-blue hover:shadow-[0_0_18px_rgba(47,128,237,0.25)]">
+            class="group/link inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm transition-all duration-300 hover:border-primary-blue/70 hover:bg-primary-blue/10 hover:text-primary-blue hover:shadow-[0_0_18px_rgba(47,128,237,0.25)] sm:w-auto sm:justify-start">
             <span>Tümünü Gör</span>
             <x-icons.arrows.chevron-right
                 class="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />

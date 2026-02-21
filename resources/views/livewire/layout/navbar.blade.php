@@ -11,8 +11,8 @@ new class extends Component {
     }
 }; ?>
 
-<header class="flex justify-between items-center mb-16 px-6 md:px-12 py-8 md:pt-10 md:pb-0">
-    <div class="flex items-center gap-4">
+<header class="flex items-center justify-between gap-4 mb-16 px-6 py-8 md:px-12 md:pt-10 md:pb-0">
+    <div class="flex min-w-0 items-center gap-4">
         <!-- Hamburger Menu (Mobile Only) -->
         <button @click="$dispatch('open-sidebar')"
             class="lg:hidden w-12 h-12 bg-white/5 border border-white/5 backdrop-blur-xl rounded-2xl flex items-center justify-center text-white hover:bg-white/10 transition-all duration-300 shadow-lg shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue focus-visible:ring-offset-2 focus-visible:ring-offset-main-bg">
@@ -29,14 +29,14 @@ new class extends Component {
 
     <!-- Search Bar -->
     <div
-        class="hidden md:flex w-search-bar bg-white/5 border border-white/5 focus-within:border-white/20 backdrop-blur-xl rounded-2xl items-center gap-3 px-5 py-3.5 text-muted-text transition-all duration-300 shadow-lg shadow-black/20">
+        class="hidden md:flex flex-1 max-w-search-bar bg-white/5 border border-white/5 focus-within:border-white/20 backdrop-blur-xl rounded-2xl items-center gap-3 px-5 py-3.5 text-muted-text transition-all duration-300 shadow-lg shadow-black/20">
         <x-icons.search class="w-5 h-5 text-white/40" />
         <input type="text" placeholder="Anime Ara..."
             class="bg-transparent border-none text-white w-full text-sm placeholder-muted-text rounded-md focus:outline-hidden">
     </div>
 
     <!-- Right Actions -->
-    <div class="flex items-center gap-5">
+    <div class="flex shrink-0 items-center gap-5">
         <button wire:click="toggleNotifications"
             class="w-12 h-12 bg-white/5 border border-white/5 backdrop-blur-xl rounded-2xl flex items-center justify-center text-muted-text hover:bg-white/10 hover:text-white transition-all duration-300 relative group cursor-pointer shadow-lg shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue focus-visible:ring-offset-2 focus-visible:ring-offset-main-bg">
             <x-icons.nofitication.default class="w-6 h-6 {{ $hasNotifications ? 'animate-ring text-white' : '' }}" />

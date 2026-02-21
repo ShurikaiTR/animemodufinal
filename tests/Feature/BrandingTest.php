@@ -13,7 +13,7 @@ test('home page renders all core components and branding', function () {
         ->assertSee('Filmler')
         ->assertSee('Anime Ara...')
         ->assertSee('JUJUTSU KAISEN')
-        ->assertSee('Eklenen Animeler');
+        ->assertSeeLivewire('home.latest-animes.latest-animes');
 });
 
 test('sidebar component displays refined navigation', function () {
