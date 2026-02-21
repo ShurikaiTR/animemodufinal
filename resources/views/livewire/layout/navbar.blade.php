@@ -11,7 +11,8 @@ new class extends Component {
     }
 }; ?>
 
-<header class="flex items-center justify-between gap-4 mb-16 px-6 py-8 md:px-12 md:pt-10 md:pb-0">
+<header
+    class="relative z-30 mb-0 flex items-center justify-between gap-4 border-b border-white/10 bg-black/15 px-6 py-4 backdrop-blur-md md:mb-12 md:border-b-0 md:bg-transparent md:px-12 md:py-8 md:backdrop-blur-0 lg:mb-16 lg:pt-10 lg:pb-0">
     <div class="flex min-w-0 items-center gap-4">
         <!-- Hamburger Menu (Mobile Only) -->
         <button @click="$dispatch('open-sidebar')"

@@ -12,7 +12,7 @@ test('home page renders all core components and branding', function () {
         ->assertSee('Animeler')
         ->assertSee('Filmler')
         ->assertSee('Anime Ara...')
-        ->assertSee('JUJUTSU KAISEN')
+        ->assertSee('Hemen İzle')
         ->assertSeeLivewire('home.latest-animes.latest-animes');
 });
 
@@ -43,9 +43,9 @@ test('navbar toggles notification state', function () {
 
 test('hero section renders primary content', function () {
     Livewire::test('home.hero-section')
-        ->assertSee('JUJUTSU KAISEN')
+        ->assertSee('Hemen İzle')
         ->assertSee('Hemen')
-        ->assertSee('HD');
+        ->assertSee('13+');
 });
 
 test('latest animes renders active streams', function () {

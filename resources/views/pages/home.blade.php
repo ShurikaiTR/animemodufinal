@@ -44,7 +44,7 @@ new
 
             <!-- Content Area (Grows naturally) -->
             <div class="pb-24 md:pb-10 px-4 md:px-8">
-                <div class="pt-2 pb-10">
+                <div class="pt-0 pb-10">
                     <livewire:home.hero-section />
 
                     <livewire:home.latest-animes.latest-animes defer.bundle />
