@@ -7,22 +7,32 @@
     'year' => 'TBA',
     'episode_count' => '?',
     'genre' => 'Unknown',
+    'description' => null,
 ])
 
 @php
     $link = $slug && \Illuminate\Support\Facades\Route::has('anime.show')
         ? route('anime.show', $slug)
         : $href;
+    $posterScheme = parse_url((string) $poster_url, PHP_URL_SCHEME);
+    $safePosterUrl = filter_var($poster_url, FILTER_VALIDATE_URL) && in_array($posterScheme, ['http', 'https'], true)
+        ? $poster_url
+        : asset('images/animemodu-logo.svg');
 @endphp
 
-<article class="group relative w-full cursor-pointer bg-dark-bg/50 border border-white/5 hover:border-white/10 rounded-2xl p-3 sm:p-4 transition-all duration-300" {{ $attributes }}>
+<article class="group relative w-full cursor-pointer rounded-2xl border border-white/5 bg-[#1a1c24]/80 p-3 transition-all duration-300 hover:border-primary-blue/30 hover:bg-[#1f2129] hover:shadow-lg hover:shadow-black/40 sm:p-4" {{ $attributes }}>
     <a href="{{ $link }}" class="flex gap-4 sm:gap-6 items-center focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary-blue rounded-xl sm:rounded-2xl h-full">
         {{-- Image Container --}}
         <div class="relative w-24 sm:w-32 aspect-[2/3] shrink-0 rounded-xl overflow-hidden shadow-lg isolate">
             {{-- Main Image --}}
-            <img src="{{ $poster_url }}"
+            <img src="{{ $safePosterUrl }}"
                  alt="{{ $title }} Poster"
                  loading="lazy"
+                 decoding="async"
+                 fetchpriority="low"
+                 width="160"
+                 height="240"
+                 referrerpolicy="no-referrer"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:blur-xs group-hover:brightness-50 z-0">
 
             {{-- Glass Overlay & Play Button --}}
@@ -59,6 +69,12 @@
                     {{ $genre }}
                 </span>
             </div>
+
+            @if($description)
+                <p class="mt-2 text-xs leading-relaxed text-gray-400/90 line-clamp-2 sm:text-sm">
+                    {{ $description }}
+                </p>
+            @endif
         </div>
         
         {{-- Right Arrow or Action (Desktop only optional) --}}

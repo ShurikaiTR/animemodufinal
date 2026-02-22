@@ -13,6 +13,10 @@
     $link = $slug && \Illuminate\Support\Facades\Route::has('anime.show')
         ? route('anime.show', $slug)
         : $href;
+    $posterScheme = parse_url((string) $poster_url, PHP_URL_SCHEME);
+    $safePosterUrl = filter_var($poster_url, FILTER_VALIDATE_URL) && in_array($posterScheme, ['http', 'https'], true)
+        ? $poster_url
+        : asset('images/animemodu-logo.svg');
     $genreList = is_array($genre) ? $genre : array_map('trim', array_filter(explode(',', $genre)));
     $displayGenres = array_slice($genreList, 0, 2);
     $extraCount = count($genreList) - 2;
@@ -25,11 +29,14 @@
         <div class="relative w-full aspect-[2/3] rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-out group-hover:scale-95 group-hover:rounded-3xl group-hover:shadow-2xl group-hover:shadow-black/60 isolate">
             
             {{-- Main Image --}}
-            <img src="{{ $poster_url }}"
+            <img src="{{ $safePosterUrl }}"
                  alt="{{ $title }} Poster"
                  loading="lazy"
                  decoding="async"
                  fetchpriority="low"
+                 width="320"
+                 height="480"
+                 referrerpolicy="no-referrer"
                  class="w-full h-full object-cover transition-all duration-500 group-hover:blur-xs group-hover:brightness-50 z-0">
             
             {{-- Badges --}}
