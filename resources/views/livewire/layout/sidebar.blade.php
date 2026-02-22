@@ -45,8 +45,13 @@ new class extends Component {
                 @endif
                 <x-icons.movies.movies class="w-6 h-6" /> Filmler
             </a>
-            <a href="#"
-                class="flex items-center gap-4 py-3 px-2 text-muted-text hover:text-primary-blue transition-colors font-normal">
+            <a href="{{ route('calendar') }}"
+                class="relative flex items-center gap-4 px-2 py-3 font-normal transition-colors {{ request()->routeIs('calendar') ? 'text-primary-blue' : 'text-muted-text hover:text-primary-blue' }}">
+                @if (request()->routeIs('calendar'))
+                    <div
+                        class="absolute -left-8 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r bg-primary-blue shadow-active-glow">
+                    </div>
+                @endif
                 <x-icons.calendar.calendar class="w-6 h-6" /> Takvim
             </a>
         </nav>
