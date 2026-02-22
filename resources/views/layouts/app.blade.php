@@ -8,6 +8,9 @@
 
     <title>{{ $title ?? config('app.name') }}</title>
 
+    <meta name="description"
+        content="{{ $description ?? 'AnimeModu - Türkiye\'nin en modern anime izleme platformu. HD kalitesinde, reklamsız anime izle.' }}">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
@@ -18,7 +21,8 @@
         x-effect="document.body.classList.toggle('overflow-hidden', sidebarOpen && window.innerWidth < 1024)"
         @open-sidebar.window="sidebarOpen = true" @keydown.escape.window="sidebarOpen = false">
 
-        <div x-show="sidebarOpen" x-cloak class="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true">
+        <div x-show="sidebarOpen" x-cloak class="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true"
+            aria-label="Gezinme menüsü">
             <div x-show="sidebarOpen" x-transition:enter="transition-opacity ease-linear duration-300"
                 x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                 x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100"

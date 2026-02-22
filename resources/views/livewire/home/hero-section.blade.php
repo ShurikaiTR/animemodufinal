@@ -13,8 +13,8 @@ new class extends Component {
     <div
         class="group relative mx-auto w-full max-w-6xl min-h-[420px] sm:min-h-[430px] lg:min-h-[500px] overflow-hidden rounded-none rounded-b-3xl md:rounded-3xl shadow-none md:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
 
-        <img src="https://image.tmdb.org/t/p/original/9CsTtHlvErQ93jvIWIjs06G0Abe.jpg" alt="Öne Çıkan Anime"
-            loading="eager" decoding="async" fetchpriority="high"
+        <img src="https://image.tmdb.org/t/p/w1280/9CsTtHlvErQ93jvIWIjs06G0Abe.jpg" alt="Öne Çıkan Anime"
+            loading="eager" decoding="async" fetchpriority="high" width="1280" height="720"
             class="absolute inset-0 w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-[1500ms] ease-out">
 
         <div class="absolute inset-0 bg-gradient-to-r from-dark-bg/95 via-dark-bg/70 to-transparent"></div>

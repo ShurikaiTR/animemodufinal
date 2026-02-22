@@ -11,13 +11,13 @@ new class extends Component {
 
     <!-- Logo -->
     <div class="flex items-center justify-center mb-16">
-        <img src="{{ asset('images/animemodu-logo.svg') }}" alt="AnimeModu" class="h-16 w-auto">
+        <img src="{{ asset('images/animemodu-logo.svg') }}" alt="AnimeModu" class="h-16 w-auto" width="160" height="64">
     </div>
 
     <!-- Menu Section -->
     <div class="mb-10">
         <div class="text-xs text-sidebar-label font-semibold uppercase tracking-label mb-5 pl-2">Menu</div>
-        <nav class="flex flex-col gap-1">
+        <nav class="flex flex-col gap-1" aria-label="Ana menü">
             <a href="{{ route('home') }}"
                 class="relative flex items-center gap-4 px-2 py-3 font-normal transition-colors {{ request()->routeIs('home') ? 'text-primary-blue' : 'text-muted-text hover:text-primary-blue' }}">
                 @if (request()->routeIs('home'))
@@ -36,8 +36,13 @@ new class extends Component {
                 @endif
                 <x-icons.tv.tv class="w-6 h-6" /> Animeler
             </a>
-            <a href="#"
-                class="flex items-center gap-4 py-3 px-2 text-muted-text hover:text-primary-blue transition-colors font-normal">
+            <a href="{{ route('movies.index') }}"
+                class="relative flex items-center gap-4 px-2 py-3 font-normal transition-colors {{ request()->routeIs('movies.index') ? 'text-primary-blue' : 'text-muted-text hover:text-primary-blue' }}">
+                @if (request()->routeIs('movies.index'))
+                    <div
+                        class="absolute -left-8 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r bg-primary-blue shadow-active-glow">
+                    </div>
+                @endif
                 <x-icons.movies.movies class="w-6 h-6" /> Filmler
             </a>
             <a href="#"
@@ -50,18 +55,18 @@ new class extends Component {
     <!-- Library Section -->
     <div class="mb-auto">
         <div class="text-xs text-sidebar-label font-semibold uppercase tracking-label mb-5 pl-2">Library</div>
-        <nav class="flex flex-col gap-1">
+        <nav class="flex flex-col gap-1" aria-label="Kütüphane">
             <a href="#"
                 class="flex items-center gap-4 py-3 px-2 text-muted-text hover:text-primary-blue transition-colors font-normal">
-                <i class="far fa-clock w-5 text-center"></i> Watched
+                <i class="far fa-clock w-5 text-center" aria-hidden="true"></i> Watched
             </a>
             <a href="#"
                 class="flex items-center gap-4 py-3 px-2 text-muted-text hover:text-primary-blue transition-colors font-normal">
-                <i class="far fa-heart w-5 text-center"></i> Liked
+                <i class="far fa-heart w-5 text-center" aria-hidden="true"></i> Liked
             </a>
             <a href="#"
                 class="flex items-center gap-4 py-3 px-2 text-muted-text hover:text-primary-blue transition-colors font-normal">
-                <i class="far fa-folder w-5 text-center"></i> Downloads
+                <i class="far fa-folder w-5 text-center" aria-hidden="true"></i> Downloads
             </a>
         </nav>
     </div>

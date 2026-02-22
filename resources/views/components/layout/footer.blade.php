@@ -16,14 +16,14 @@
                     kesintisiz izleyin.
                 </p>
                 <div class="flex items-center gap-4 mt-8">
-                    <a href="#" class="{{ $socialLinkClasses }}">
-                        <x-icons.social-media.x class="w-5 h-5" />
+                    <a href="#" class="{{ $socialLinkClasses }}" aria-label="X'te takip et">
+                        <x-icons.social-media.x class="w-5 h-5" aria-hidden="true" />
                     </a>
-                    <a href="#" class="{{ $socialLinkClasses }}">
-                        <x-icons.social-media.discord class="w-5 h-5" />
+                    <a href="#" class="{{ $socialLinkClasses }}" aria-label="Discord sunucumuz">
+                        <x-icons.social-media.discord class="w-5 h-5" aria-hidden="true" />
                     </a>
-                    <a href="#" class="{{ $socialLinkClasses }}">
-                        <x-icons.social-media.instagram class="w-5 h-5" />
+                    <a href="#" class="{{ $socialLinkClasses }}" aria-label="Instagram'da takip et">
+                        <x-icons.social-media.instagram class="w-5 h-5" aria-hidden="true" />
                     </a>
                 </div>
             </div>

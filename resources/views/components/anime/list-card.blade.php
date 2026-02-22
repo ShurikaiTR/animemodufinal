@@ -18,10 +18,12 @@
     $safePosterUrl = filter_var($poster_url, FILTER_VALIDATE_URL) && in_array($posterScheme, ['http', 'https'], true)
         ? $poster_url
         : asset('images/animemodu-logo.svg');
+    $genreItems = is_array($genre) ? $genre : array_map('trim', array_filter(explode(',', (string) $genre)));
+    $genreText = implode(' • ', $genreItems);
 @endphp
 
 <article class="group relative w-full cursor-pointer rounded-2xl border border-white/5 bg-[#1a1c24]/80 p-3 transition-all duration-300 hover:border-primary-blue/30 hover:bg-[#1f2129] hover:shadow-lg hover:shadow-black/40 sm:p-4" {{ $attributes }}>
-    <a href="{{ $link }}" class="flex gap-4 sm:gap-6 items-center focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary-blue rounded-xl sm:rounded-2xl h-full">
+    <a href="{{ $link }}" class="flex h-full items-center gap-4 rounded-xl focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary-blue sm:gap-6 sm:rounded-2xl">
         {{-- Image Container --}}
         <div class="relative w-24 sm:w-32 aspect-[2/3] shrink-0 rounded-xl overflow-hidden shadow-lg isolate">
             {{-- Main Image --}}
@@ -45,38 +47,38 @@
 
         {{-- Details Container --}}
         <div class="flex-1 min-w-0 flex flex-col justify-center py-1 sm:py-2">
-            <h3 class="text-white font-semibold text-base sm:text-lg lg:text-xl leading-tight line-clamp-1 group-hover:text-primary-blue transition-colors duration-300 mb-2 sm:mb-3">
+            <h3 class="text-white/95 font-medium text-base sm:text-lg lg:text-xl leading-tight line-clamp-1 group-hover:text-primary-blue transition-colors duration-300 mb-2 sm:mb-3">
                 {{ $title }}
             </h3>
-            
+
             <div class="flex flex-wrap items-center gap-2 sm:gap-4 mb-2 sm:mb-3 text-xs sm:text-sm text-gray-300">
                 <span class="flex items-center gap-1 sm:gap-1.5 bg-black/40 px-2 py-1 rounded-md">
                     <x-icons.star.star class="w-3.5 h-3.5 text-primary-blue" aria-hidden="true" />
-                    <span class="font-bold text-white/90">{{ $rating }}</span>
+                    <span class="font-semibold text-white/90">{{ $rating }}</span>
                 </span>
-                
-                <span class="flex items-center gap-1.5 bg-black/40 px-2 py-1 rounded-md font-medium">
+
+                <span class="flex items-center gap-1.5 bg-black/40 px-2 py-1 rounded-md font-normal text-white/85">
                     {{ $year }}
                 </span>
-                
-                <span class="flex items-center gap-1.5 bg-black/40 px-2 py-1 rounded-md font-medium text-gray-400">
+
+                <span class="flex items-center gap-1.5 bg-black/40 px-2 py-1 rounded-md font-normal text-gray-400">
                     {{ $episode_count }} Bölüm
                 </span>
             </div>
-            
+
             <div class="flex items-center gap-1.5">
-                <span class="text-xs sm:text-sm font-medium text-gray-400 line-clamp-1">
-                    {{ $genre }}
+                <span class="text-xs sm:text-sm font-normal text-gray-400/90 line-clamp-1 tracking-wide">
+                    {{ $genreText }}
                 </span>
             </div>
 
             @if($description)
-                <p class="mt-2 text-xs leading-relaxed text-gray-400/90 line-clamp-2 sm:text-sm">
+                <p class="mt-2 text-xs leading-relaxed text-gray-400/80 line-clamp-2 sm:text-sm">
                     {{ $description }}
                 </p>
             @endif
         </div>
-        
+
         {{-- Right Arrow or Action (Desktop only optional) --}}
         <div class="hidden sm:flex shrink-0 w-12 h-12 items-center justify-center text-gray-500 group-hover:text-primary-blue group-hover:translate-x-1 transition-all duration-300 mr-2">
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
